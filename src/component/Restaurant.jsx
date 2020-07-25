@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 
 class Restaurant extends Component {
@@ -7,29 +8,26 @@ class Restaurant extends Component {
   };
   async componentDidMount() {
     await Axios.get(
-      "https://developers.zomato.com/api/v2.1/collections?city_id=291",
+      "https://developers.zomato.com/api/v2.1/location_details?entity_id=291&entity_type=city",
+      // "https://developers.zomato.com/api/v2.1/collections?city_id=291",
       {
         headers: {
           "user-key": "1d4a49f074a882ca0016e5d98a8da6fb",
         },
       }
     ).then((response) => {
-      this.setState({ restaurant: response.data.collections });
+      console.log(response.data.best_rated_restaurant);
+      this.setState({ restaurant: response.data.best_rated_restaurant });
     });
   }
   listRestaurants() {
     return this.state.restaurant.map((eachRestaurant) => {
       return (
         <ul>
-          <img
-            src={eachRestaurant.collection.image_url}
-            alt={eachRestaurant.title}
-          />
-          <li>{eachRestaurant.collection.title}</li>
-          <li>{eachRestaurant.collection.description}</li>
-          <a href={eachRestaurant.collection.url}>
-            {eachRestaurant.collection.url}
-          </a>
+          <li>{eachRestaurant.restaurant.name}</li>
+          <li>{eachRestaurant.restaurant.cuisines}</li>
+          <li>{eachRestaurant.restaurant.timings}</li>
+          <li>{eachRestaurant.restaurant.location.address}</li>
         </ul>
       );
     });
@@ -37,7 +35,8 @@ class Restaurant extends Component {
   render() {
     return (
       <div>
-        <h1>Zomato Restaurant Collections</h1>
+        <Link to="/">Back</Link>
+        <h1>Zomato Best Rated Restaurants </h1>
         {this.listRestaurants()}
       </div>
     );

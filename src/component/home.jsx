@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 class home extends Component {
   render() {
     return (
-      <div>
-        <Link to="./restaurant">Restaurant</Link>
+      <section>
         <h1>Home</h1>
-      </div>
+        <div>
+          <button>
+            <Link to="./restaurant">Top-rated Restaurants</Link>{" "}
+          </button>
+        </div>
+      </section>
     );
   }
 }
