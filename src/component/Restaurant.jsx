@@ -36,7 +36,6 @@ class Restaurant extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Back</Link>
         <div className="miami">
           <h1>Zomato Best Rated Restaurants in Miami</h1>
           {this.listRestaurants()}

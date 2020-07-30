@@ -3,11 +3,13 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./component/home.jsx";
 import Restaurant from "./component/Restaurant.jsx";
 import Newyork from "./component/Newyork.jsx";
+import Navlink from "./component/Navlink.jsx";
 
 class App extends Component {
   render() {
     return (
       <div>
+        <Navlink />
         <Switch>
           <Route
             exact

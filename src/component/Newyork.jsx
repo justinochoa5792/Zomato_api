@@ -38,8 +38,7 @@ class Newyork extends Component {
   }
   render() {
     return (
-      <div>
-        <Link to="/">Back</Link>
+      <div className="newyork">
         <h1>Zomato Best Rated Restaurants in New York</h1>
         {this.getRestaurants()}
       </div>
